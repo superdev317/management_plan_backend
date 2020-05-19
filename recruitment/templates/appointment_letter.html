@@ -1,0 +1,24 @@
+{% extends "admin/base_site.html" %}
+{% load i18n static %}
+
+{% block content %}
+
+<p>{% trans "Appointment Letter" %}</p>
+
+<form method="post">{% csrf_token %}
+<fieldset class="module aligned">
+<div>
+Dear {{ employee.first_name }}:
+<p>Thank you for agreeing to serve as the  
+  <input type="text" class="form-control" placeholder="(Insert Working Title, e.g., director of graduate programs, curriculum coordinator, director of undergraduate advising)"  name="job_title">{{ job_title }} for the <input type="text" class="form-control" placeholder="(Insert Department)">.  
+   Your <input type="text" class="form-control" placeholder="(insert tenure status and rank)"> in the Department of 
+   <input type="text" class="form-control" placeholder="(Insert Department)"> is designated as your primary appointment for determination 
+   of conditions of employment and your rights and responsibilities as an employee. 
+    This administrative appointment is your secondary appointment and is on an “at-will” basis, <input type="text" class="form-control" placeholder="12 Months"> position, beginning  
+    <input type="text" class="form-control" placeholder="December 21, 2017"> </p> 
+</div>
+    <input type="submit" value="{% trans 'Send' %}" />
+</fieldset>
+</form>
+
+{% endblock %}

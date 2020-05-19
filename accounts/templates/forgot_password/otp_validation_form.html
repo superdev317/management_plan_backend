@@ -1,0 +1,34 @@
+{% extends "admin/base_site.html" %}
+{% load i18n static %}
+
+{% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% static "admin/css/forms.css" %}" />{% endblock %}
+{% block breadcrumbs %}
+<div class="breadcrumbs">
+<a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
+&rsaquo; {% trans 'OTP Validation' %}
+</div>
+{% endblock %}
+
+{% block title %}{{ title }}{% endblock %}
+{% block content_title %}<h1>{{ title }}</h1>{% endblock %}
+{% block content %}
+
+<p>{% trans "Forgotten your password? Enter your OTP code below." %}</p>
+
+<form method="post">{% csrf_token %}
+<fieldset class="module aligned">
+	<div class="form-row field-phone">
+        {{ form.phone.errors }}
+        <label for="id_phone">{% trans 'Phone:' %}</label>
+        {{ form.phone }}
+    </div>
+    <div class="form-row field-otp">
+        {{ form.otp.errors }}
+        <label for="id_phone">{% trans 'OTP:' %}</label>
+        {{ form.otp }}
+    </div>
+    <input type="submit" value="{% trans 'Validate' %}" />
+</fieldset>
+</form>
+
+{% endblock %}

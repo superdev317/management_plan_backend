@@ -1,0 +1,29 @@
+{% extends "admin/base_site.html" %}
+{% load i18n static %}
+
+{% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% static "admin/css/forms.css" %}" />{% endblock %}
+{% block breadcrumbs %}
+<div class="breadcrumbs">
+<a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
+&rsaquo; {% trans 'Security  Question Validation' %}
+</div>
+{% endblock %}
+
+{% block title %}{{ title }}{% endblock %}
+{% block content_title %}<h1>{{ title }}</h1>{% endblock %}
+{% block content %}
+
+<p>{% trans "Enter your answer for security question below." %}</p>
+
+<form method="post">{% csrf_token %}
+<fieldset class="module aligned">
+    <div class="form-row field-security_question">
+        {{ form.security_question.errors }}
+        <label for="id_security_question">{% trans 'Security Question:' %}</label>
+        {{ form.security_question }}
+    </div>
+    <input type="submit" value="{% trans 'Submit' %}" />
+</fieldset>
+</form>
+
+{% endblock %}
