@@ -45,7 +45,7 @@ odfpy==1.3.6
 openpyxl==2.5.0
 optisorl==0.2.1
 phonenumberslite==8.8.1
-Pillow==5.0.0
+Pillow==8.2.0
 psycopg2==2.7.4
 py-moneyed==0.7.0
 pyfcm==1.4.3
